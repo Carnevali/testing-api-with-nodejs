@@ -1,0 +1,32 @@
+{
+  "name": "testing-api-with-nodejs",
+  "version": "1.0.0",
+  "description": "Testing API with NodeJs Mocha Chai",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js",
+    "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carnevali/testing-api-with-nodejs.git"
+  },
+  "author": "Felipe Carnevali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carnevali/testing-api-with-nodejs/issues"
+  },
+  "homepage": "https://github.com/Carnevali/testing-api-with-nodejs#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.16.3"
+  }
+}
