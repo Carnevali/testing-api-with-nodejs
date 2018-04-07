@@ -1,1 +1,1 @@
-In this project I was created a testing api for improve my skills using a different technology suck as: NodeJs, ECMA Script 6, Babel, Mocha, Chai, SuperTest, Docker and MongoDB.
+In this project I was created a testing api for improve my skills using a different technology suck as: NodeJs, ECMA Script 6, ESlint, Babel, Mocha, Chai, SuperTest, Docker and MongoDB.
