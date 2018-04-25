@@ -11,6 +11,9 @@
     "globals": {
         "describe": true,
         "it": true,
+        "td": true,
+        "Joi": true,
+        "joiAssert": true,
         "expect": true,
         "app": true,
         "beforeEach": true,

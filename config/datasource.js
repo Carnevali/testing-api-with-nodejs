@@ -16,7 +16,7 @@ const loadModels = (sequelize) => {
   return models;
 };
 
-export default(app) => {
+export default (app) => {
   if (!database) {
     const config = app.config;
     const sequelize = new Sequelize(
