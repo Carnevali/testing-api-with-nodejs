@@ -1,0 +1,10 @@
+version: '2'
+services:
+  books:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: 
+      NODE_ENV: production
+    ports:
+      - 7000:7000

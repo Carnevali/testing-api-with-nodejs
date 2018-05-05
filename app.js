@@ -9,9 +9,11 @@ import authorization from './auth';
 
 const app = express();
 
+const PORT = process.env.PORT || 7000
+
 app.config = config;
 app.datasource = datasource(app);
-app.set('port', 7000);
+app.set('port', PORT);
 app.use(bodyParser.json());
 
 const auth = authorization(app);

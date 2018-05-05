@@ -1,0 +1,14 @@
+version: '2'
+services:
+  books:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    environment: 
+      NODE_ENV: development
+    ports:
+      - 7000:7000
+    volumes:
+      - .:/home/app/books
+      - /home/app/books/node_modules
