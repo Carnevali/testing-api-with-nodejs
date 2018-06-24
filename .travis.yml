@@ -4,6 +4,6 @@ node_js:
 script:
   - npm run test-integration && npm run test-contract
 before_install:
-  - npm -i -g npm@3.10.9
+  - npm i -g npm@3.10.9
 after_success:
   - echo "Sucesso"
