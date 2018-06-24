@@ -4,6 +4,6 @@ node_js:
 before_install:
   - npm install -f
 script:
-  - npm run test
+  - npm run test-integration && npm run test-contract
 after_success:
   - echo "Sucesso"
