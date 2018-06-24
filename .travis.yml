@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "4.6.2"
+before_install:
+  - npm install babel babel-cli babel-preset-es2015 --save
+  - npm install --save express
+  - npm install mocha chai supertest --save-dev
+  - npm install sequelize sqlite3 --save
+  - npm install --save body-parser (e usado para fazer o parser do nosso json nas rotas de POST)
+  - npm install --save-dev testdouble  (usado para setar/simular qual o tipo de comportamento a funcao deve ter quando ela for chamada "resumindo")
+  - npm install --save-dev joi@9.0.4 joi-assert (usado para realizar teste de contrato, explicacao abaixo na obs)
+  - npm install --save http-status
+  - npm install --save bcrypt
+  - npm install --save jwt-simple passport passport-jwt
+  - export PKG=eslint-config-airbnb
+  - npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
+script:
+  - npm run lint:fix
+  - npm run test
+after_success:
+  - echo "Sucesso"
