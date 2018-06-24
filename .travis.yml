@@ -3,6 +3,7 @@ node_js:
   - "4.6.2"
 before_install:
   - npm install babel babel-cli babel-preset-es2015 --save
+  - npm install --save-dev babel-core
   - npm install --save express
   - npm install mocha chai supertest --save-dev
   - npm install sequelize sqlite3 --save
