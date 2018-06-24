@@ -2,22 +2,7 @@ language: node_js
 node_js:
   - "4.6.2"
 before_install:
-  - npm install babel babel-cli babel-preset-es2015 --save
-  - npm install --save-dev babel-core
-  - npm install --save express
-  - npm install mocha chai supertest --save-dev
-  - npm install sequelize sqlite3 --save
-  - npm install --save body-parser
-  - npm install --save-dev testdouble
-  - npm install --save-dev joi@9.0.4 joi-assert
-  - npm install --save http-status
-  - npm install --save bcrypt
-  - npm install --save jwt-simple passport passport-jwt
-  - npm install --save-dev eslint@4.19.1
-  - npm install --save-dev eslint-config-airbnb@16.1.0
-  - npm install --save-dev eslint-plugin-import@2.10.0
-  - npm install --save-dev eslint-plugin-jsx-a11y@6.0.3
-  - npm install --save-dev eslint-plugin-react@7.7.0
+  - npm install -f
 script:
   - npm run test
 after_success:
