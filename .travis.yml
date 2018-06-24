@@ -12,8 +12,11 @@ before_install:
   - npm install --save http-status
   - npm install --save bcrypt
   - npm install --save jwt-simple passport passport-jwt
-  - export PKG=eslint-config-airbnb
-  - npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
+  - npm install --save-dev eslint@4.19.1
+  - npm install --save-dev eslint-config-airbnb@16.1.0
+  - npm install --save-dev eslint-plugin-import@2.10.0
+  - npm install --save-dev eslint-plugin-jsx-a11y@6.0.3
+  - npm install --save-dev eslint-plugin-react@7.7.0
 script:
   - npm run lint:fix
   - npm run test
