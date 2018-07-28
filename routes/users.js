@@ -4,7 +4,7 @@ export default (app) => {
   const usersController = new UsersController(app.datasource.models.Users);
 
   app.route('/users')
-    .all(app.auth.authenticate())
+    //.all(app.auth.authenticate())
     .get((req, res) => {
       usersController.getAll()
         .then((response) => {
@@ -21,7 +21,7 @@ export default (app) => {
     });
 
   app.route('/users/:id')
-    .all(app.auth.authenticate())
+    //.all(app.auth.authenticate())
     .get((req, res) => {
       usersController.getById(req.params)
         .then((response) => {
