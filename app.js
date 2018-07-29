@@ -21,7 +21,12 @@ const auth = authorization(app);
 app.use(auth.initialize());
 app.auth = auth;
 
-let detailsRoute = function(req, res, next) {
+function error(message) {
+    res.status(500);
+    res.json({ error: message });
+}
+
+const detailsRoute = (req, res, next) => {
     console.log(req.method + " " + req.url);
     
     if (req.headers && req.headers.authorization) {
@@ -31,10 +36,10 @@ let detailsRoute = function(req, res, next) {
     let token = req.headers.authorization ? req.headers.authorization.substring(4, req.headers.authorization.lenght).trim() : undefined;
 
     if (token) {
-        let tokenDecode = jwt.decode(token, config.jwtSecret);
+        let decodeToken = jwt.decode(token, config.jwtSecret);
         let Users = app.datasource.models.Users;
         
-        Users.findOne({ where: { id: tokenDecode.id } }).then((user) => {
+        Users.findById(decodeToken.id).then((user) => {
             if (user) {
                 res.setHeader('userId', user.id);
                 res.setHeader('userEmail', user.email);
@@ -50,15 +55,10 @@ let detailsRoute = function(req, res, next) {
         })    
     } else {
         error("Token not found.");
-    }  
-    
-    function error(message) {
-        res.status(500);
-        res.json({ error: message });
-    }
+    }     
 };
 
-let cors = function(req, res, next) {
+const cors = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
