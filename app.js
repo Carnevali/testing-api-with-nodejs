@@ -26,37 +26,11 @@ function error(message) {
     res.json({ error: message });
 }
 
-const detailsRoute = (req, res, next) => {
-    console.log(req.method + " " + req.url);
-    
-    if (req.headers && req.headers.authorization) {
-        console.log("Token: " + req.headers.authorization.substring(4, req.headers.authorization.lenght));
-    }
-
-    let token = req.headers.authorization ? req.headers.authorization.substring(4, req.headers.authorization.lenght).trim() : undefined;
-
-    if (token) {
-        let decodeToken = jwt.decode(token, config.jwtSecret);
-        let Users = app.datasource.models.Users;
-        
-        Users.findById(decodeToken.id).then((user) => {
-            if (user) {
-                res.setHeader('userId', user.id);
-                res.setHeader('userEmail', user.email);
-                res.setHeader('userName', user.name);    
-
-                next();
-            } else {
-                error("Token invalid or user not found.");
-            }
-        })
-        .catch(() => {
-            error("Error when was trying load the user.");
-        })    
-    } else {
-        error("Token not found.");
-    }     
-};
+const middleware = (req, res, next) => { 
+    console.log('this is the request', req.body);
+    req.headers['new-header'] = 'hello';
+    next();
+ }
 
 const cors = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -66,7 +40,7 @@ const cors = (req, res, next) => {
     next();
 }
 
-app.use('/', detailsRoute, cors);
+app.use('/', middleware, cors);
 
 booksRouter(app);
 usersRouter(app);
