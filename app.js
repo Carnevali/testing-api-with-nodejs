@@ -6,7 +6,8 @@ import booksRouter from './routes/books';
 import usersRouter from './routes/users';
 import authRouter from './routes/auth';
 import authorization from './auth';
-import jwt from 'jwt-simple';
+import middleware from './middleware/middleware';
+import cors from './middleware/cors';
 
 const app = express();
 
@@ -20,25 +21,6 @@ app.use(bodyParser.json());
 const auth = authorization(app);
 app.use(auth.initialize());
 app.auth = auth;
-
-function error(message) {
-    res.status(500);
-    res.json({ error: message });
-}
-
-const middleware = (req, res, next) => { 
-    console.log('this is the request', req.body);
-    req.headers['new-header'] = 'hello';
-    next();
- }
-
-const cors = (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-
-    next();
-}
 
 app.use('/', middleware, cors);
 
